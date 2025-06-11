@@ -1,0 +1,37 @@
+<section class="reviews-section">
+  <div class="container" @reviewAnimation>
+    <div class="section-header" >
+      <div class="section-icon">
+        <i class="pi pi-star"></i>
+      </div>
+      <h2>AVIS CLIENTS</h2>
+      <p class="subtitle">Ce que nos clients disent de notre travail</p>
+    </div>
+
+    <!-- <div class="section-header">
+      <div class="star-badge">
+        <span>⭐️</span>
+      </div>
+      <h1>PAGE AVIS CLIENTS</h1>
+      <p class="subtitle">Ce que nos clients disent de notre travail</p>
+    </div> -->
+
+    <div class="reviews-grid">
+      <div class="review-card" *ngFor="let review of reviews">
+        <div class="rating">
+          <span @starAnimation *ngFor="let star of getStars(review.rating)">★</span>
+        </div>
+        <blockquote class="review-content">
+          <p>"{{ review.content }}"</p>
+        </blockquote>
+        <div class="review-footer">
+          <div class="author-info">
+            <span class="author">— {{ review.author }}</span>
+            <span class="location">{{ review.location }}</span>
+          </div>
+          <div class="review-date">{{ review.date }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

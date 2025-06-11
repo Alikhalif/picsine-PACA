@@ -1,0 +1,116 @@
+<!-- pricing-diagnostic.component.html -->
+<section class="pricing-section" @fadeInStagger>
+  <div class="container">
+    <div class="header" @pulse>
+      <div class="icon-badge">
+        <i class="pi pi-euro"></i>
+      </div>
+      <h1>Tarifs & Diagnostic</h1>
+      <p class="subtitle">Transparence et professionnalisme dans nos prestations</p>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="pricing-cards">
+        <div *ngFor="let item of priceItems" class="price-card" [class.popular]="item.popular">
+          <div class="card-header">
+            <h3>{{ item.service }}</h3>
+            <div class="price-tag">{{ item.price }}</div>
+            <div class="popular-badge" *ngIf="item.popular">Le plus demandé</div>
+          </div>
+          <p class="service-description">{{ item.description }}</p>
+          <div class="card-footer">
+            <i class="pi pi-info-circle"></i>
+            <span>Sans engagement</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <i class="pi pi-exclamation-circle"></i>
+        <p>Tous les diagnostics sont sans engagement. Vous êtes libre de choisir de faire la réparation ou non.</p>
+      </div>
+
+      <div class="quote-form" @pulse>
+        <h2>Demande de devis gratuit</h2>
+        <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="firstName">Prénom *</label>
+              <input type="text" id="firstName" formControlName="firstName">
+              <div *ngIf="quoteForm.get('firstName')?.invalid && quoteForm.get('firstName')?.touched" class="error-message">
+                Ce champ est requis
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">Nom *</label>
+              <input type="text" id="lastName" formControlName="lastName">
+              <div *ngIf="quoteForm.get('lastName')?.invalid && quoteForm.get('lastName')?.touched" class="error-message">
+                Ce champ est requis
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="city">Ville d'intervention *</label>
+              <input type="text" id="city" formControlName="city">
+              <div *ngIf="quoteForm.get('city')?.invalid && quoteForm.get('city')?.touched" class="error-message">
+                Ce champ est requis
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="poolType">Type de piscine *</label>
+              <select id="poolType" formControlName="poolType">
+                <option value="">Sélectionnez...</option>
+                <option *ngFor="let type of poolTypes" [value]="type">{{ type }}</option>
+              </select>
+              <div *ngIf="quoteForm.get('poolType')?.invalid && quoteForm.get('poolType')?.touched" class="error-message">
+                Ce champ est requis
+              </div>
+            </div>
+
+            <div class="form-group span-2">
+              <label for="problem">Description du problème *</label>
+              <textarea id="problem" formControlName="problem" rows="3"></textarea>
+              <div *ngIf="quoteForm.get('problem')?.invalid && quoteForm.get('problem')?.touched" class="error-message">
+                Veuillez décrire le problème
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Téléphone *</label>
+              <input type="tel" id="phone" formControlName="phone">
+              <div *ngIf="quoteForm.get('phone')?.invalid && quoteForm.get('phone')?.touched" class="error-message">
+                Numéro de téléphone valide requis
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="photo">Photo (optionnelle)</label>
+              <div class="file-upload">
+                <label for="photo" class="upload-btn">
+                  <i class="pi pi-upload"></i> Joindre une photo
+                </label>
+                <input type="file" id="photo" (change)="onFileChange($event)" accept="image/*">
+                <span class="file-name" *ngIf="quoteForm.value.photo">{{ quoteForm.value.photo.name }}</span>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="quoteForm.invalid">
+            <i class="pi pi-send"></i> Envoyer la demande
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="formSubmitted" class="success-modal">
+    <div class="modal-content">
+      <i class="pi pi-check-circle"></i>
+      <h3>Demande envoyée avec succès !</h3>
+      <p>Nous vous contacterons sous 24h pour confirmer votre devis.</p>
+      <button (click)="formSubmitted = false" class="close-btn">Fermer</button>
+    </div>
+  </div>
+</section>

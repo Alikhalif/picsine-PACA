@@ -1,0 +1,236 @@
+// service-areas.component.scss
+@import '../../../../../assets/scss/variables';
+
+.service-areas {
+  padding: 4rem 1rem;
+  background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: $primary;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+
+      i {
+        font-size: 2rem;
+        color: white;
+      }
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: $text-dark;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      color: $text-light;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    @media (min-width: 992px) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .map-section {
+    flex: 1;
+    position: relative;
+
+    .map-container {
+      position: relative;
+      border-radius: $border-radius;
+      overflow: hidden;
+      box-shadow: $shadow;
+      background: #f5f7fa;
+
+      .france-map {
+        width: 100%;
+        height: auto;
+        display: block;
+        opacity: 0.9;
+        transition: $transition;
+      }
+
+      &:hover .france-map {
+        opacity: 1;
+      }
+
+      .map-marker {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        transition: $transition;
+        z-index: 2;
+
+        i {
+          font-size: 2rem;
+          color: $primary;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+          transition: $transition;
+        }
+
+        .marker-tooltip {
+          position: absolute;
+          top: -40px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: $primary;
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 4px;
+          font-size: 0.9rem;
+          white-space: nowrap;
+          opacity: 0;
+          visibility: hidden;
+          transition: $transition;
+        }
+
+        &:hover {
+          i {
+            color: darken($primary, 10%);
+            transform: scale(1.2);
+          }
+
+          .marker-tooltip {
+            opacity: 1;
+            visibility: visible;
+            top: -50px;
+          }
+        }
+
+        &.active {
+          i {
+            color: $secondary;
+            animation: pulse 1.5s infinite;
+          }
+        }
+      }
+    }
+
+    .guarantee-banner {
+      background: $primary;
+      color: white;
+      padding: 1rem;
+      border-radius: 0 0 $border-radius $border-radius;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-weight: 500;
+      margin-top: -5px;
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .departments-list {
+    flex: 1;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    .department-card {
+      background: white;
+      border-radius: $border-radius;
+      padding: 1.5rem;
+      box-shadow: $shadow;
+      cursor: pointer;
+      transition: $transition;
+      border-left: 4px solid rgba($primary, 0.3);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      }
+
+      &.active {
+        border-left: 4px solid $primary;
+        background: rgba($primary, 0.05);
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        color: $text-dark;
+        margin-bottom: 1rem;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 40px;
+          height: 2px;
+          background: $primary;
+        }
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          padding: 0.5rem 0;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: $text-light;
+
+          i {
+            color: $primary;
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 0.5rem;
+
+    .header h1 {
+      font-size: 1.7rem;
+    }
+
+    .content-wrapper {
+      flex-direction: column;
+    }
+
+    .departments-list {
+      grid-template-columns: 1fr;
+    }
+  }
+}

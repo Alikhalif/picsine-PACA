@@ -1,0 +1,16 @@
+<!-- methods.component.html -->
+<section id="diagnostic" class="methodes">
+  <div class="container">
+    <h2>Notre <span>méthode infaillible</span></h2>
+
+    <div class="grid">
+      <div class="card" *ngFor="let tech of techniques">
+        <div class="icon"><i class="pi {{tech.icon}}"></i></div>
+        <h3>{{tech.title}}</h3>
+        <p>{{tech.description}}</p>
+      </div>
+    </div>
+
+    <!-- <app-video-cta></app-video-cta> -->
+  </div>
+</section>

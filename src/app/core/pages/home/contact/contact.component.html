@@ -1,0 +1,103 @@
+<section class="contact-section" @pageAnimation>
+  <div class="container">
+    <div class="header">
+      <div class="icon-badge">
+        <i class="pi pi-phone"></i>
+      </div>
+      <h1>Contact</h1>
+      <p class="subtitle">Transparence et professionnalisme dans nos prestations</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Methods -->
+      <div class="contact-methods" @staggerAnimation>
+        <div class="contact-card" @fadeIn>
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <h3>Téléphone</h3>
+          <p>Appelez-nous directement</p>
+          <a [href]="phoneNumber" class="contact-link">06 12 34 56 78</a>
+        </div>
+
+        <div class="contact-card" @fadeIn>
+          <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Contact rapide par message</p>
+          <a [href]="whatsappLink" target="_blank" class="contact-link whatsapp-link">
+            Envoyer un message
+          </a>
+        </div>
+
+        <div class="contact-card" @fadeIn>
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Email</h3>
+          <p>Envoyez-nous un email</p>
+          <a href="mailto:contact@piscine-expert.com" class="contact-link">contactpiscine-expert.com</a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-container" @fadeIn>
+        <h2>Formulaire de contact</h2>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+          <div class="form-group">
+            <label for="name">Nom complet</label>
+            <input type="text" id="name" formControlName="name" placeholder="Votre nom">
+            <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-message">
+              Veuillez entrer un nom valide
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" placeholder="Votre email">
+            <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-message">
+              Veuillez entrer un email valide
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Téléphone (optionnel)</label>
+            <input type="tel" id="phone" formControlName="phone" placeholder="Votre numéro">
+            <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-message">
+              Format: 10 chiffres
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" formControlName="message" rows="5" placeholder="Votre message"></textarea>
+            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="error-message">
+              Le message doit contenir au moins 10 caractères
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">
+            Envoyer le message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section" @fadeIn>
+      <h2>Questions fréquentes</h2>
+      <div class="faq-container">
+        <div class="faq-item" *ngFor="let item of faqItems; let i = index" [class.expanded]="item.expanded">
+          <div class="faq-question" (click)="toggleFaq(i)">
+            {{ item.question }}
+            <span class="toggle-icon">{{ item.expanded ? '-' : '+' }}</span>
+          </div>
+          <div class="faq-answer" *ngIf="item.expanded">
+            {{ item.answer }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

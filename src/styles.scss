@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+html,
+body {
+  font-size: 12px;
+  font-family: 'Inter var', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+  scroll-behavior: smooth;
+}
+
+
+:target {
+  scroll-margin-top: 80px;
+  animation: highlight 1.5s ease;
+}
+
+@keyframes highlight {
+  from { background: rgba(0, 174, 239, 0.3); }
+  to { background: transparent; }
+}

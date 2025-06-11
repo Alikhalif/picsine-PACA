@@ -1,0 +1,142 @@
+<!-- navbar.component.html -->
+<header class="navbar">
+  <div class="container">
+    <!-- Logo + Nom -->
+    <a href="/" class="brand">
+      <!-- <img src="/assets/logo-fuite-piscine.svg" alt="FuitePiscine-PACA - Détection de fuites piscine en région PACA" class="logo"> -->
+      <span class="brand-name">Fuite<span>Piscine</span>-PACA</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <nav class="desktop-menu">
+      <ul>
+        <li><a href="/">Accueil</a></li>
+
+        <!-- Menu déroulant Services -->
+        <li class="dropdown">
+          <a href="/services">Services ▾</a>
+          <div class="dropdown-content">
+            <a href="/services/detection-fuite">Détection de fuite</a>
+            <a href="/services/reparations">Réparations</a>
+            <a href="/services/maintenance">Maintenance</a>
+          </div>
+        </li>
+
+        <li><a href="/zones-intervention">Zones d'intervention</a></li>
+        <li><a href="/tarifs">Tarifs</a></li>
+        <li><a href="/avis">Avis</a></li>
+      </ul>
+    </nav>
+
+    <!-- Boutons CTA (Desktop) -->
+    <div class="cta-buttons">
+      <a href="tel:+336XXXXXXXX" class="btn btn-urgence">
+        <i class="pi pi-phone"></i> Urgence
+      </a>
+      <a href="/devis" class="btn btn-devis">
+        <i class="pi pi-envelope"></i> Devis
+      </a>
+    </div>
+
+    <!-- Burger Menu (Mobile) -->
+    <button class="burger-menu" (click)="toggleMenu()" aria-label="Menu" [attr.aria-expanded]="isMenuOpen">
+      <span [class.active]="isMenuOpen"></span>
+      <span [class.active]="isMenuOpen"></span>
+      <span [class.active]="isMenuOpen"></span>
+    </button>
+  </div>
+
+   <!-- Enhanced Mobile Menu (Overlay) -->
+  <div class="mobile-menu" [class.active]="isMenuOpen">
+    <div class="mobile-menu-header">
+      <div class="mobile-brand">
+        <span class="brand-name">Fuite<span>Piscine</span>-PACA</span>
+      </div>
+      <button class="close-menu" (click)="closeMenu()" aria-label="Fermer le menu">
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+
+    <nav class="mobile-nav">
+      <ul>
+        <li>
+          <a href="/" (click)="closeMenu()" class="nav-link">
+            <i class="pi pi-home"></i>
+            <span>Accueil</span>
+          </a>
+        </li>
+
+        <li class="mobile-dropdown" [class.active]="isSubMenuOpen">
+          <a (click)="toggleSubMenu()" class="nav-link">
+            <i class="pi pi-cog"></i>
+            <span>Services</span>
+            <i class="pi pi-chevron-down dropdown-icon"></i>
+          </a>
+          <ul class="mobile-submenu">
+            <li>
+              <a href="/services/detection-fuite" (click)="closeMenu()" class="submenu-link">
+                <i class="pi pi-search"></i>
+                <span>Détection de fuite</span>
+              </a>
+            </li>
+            <li>
+              <a href="/services/reparations" (click)="closeMenu()" class="submenu-link">
+                <i class="pi pi-wrench"></i>
+                <span>Réparations</span>
+              </a>
+            </li>
+            <li>
+              <a href="/services/maintenance" (click)="closeMenu()" class="submenu-link">
+                <i class="pi pi-shield"></i>
+                <span>Maintenance</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/zones-intervention" (click)="closeMenu()" class="nav-link">
+            <i class="pi pi-map-marker"></i>
+            <span>Zones d'intervention</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/tarifs" (click)="closeMenu()" class="nav-link">
+            <i class="pi pi-euro"></i>
+            <span>Tarifs</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/avis" (click)="closeMenu()" class="nav-link">
+            <i class="pi pi-star"></i>
+            <span>Avis clients</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-cta-group">
+      <a href="tel:+336XXXXXXXX" class="btn btn-urgence">
+        <i class="pi pi-phone"></i>
+        <span>Urgence fuite</span>
+      </a>
+      <a href="/devis" class="btn btn-devis">
+        <i class="pi pi-envelope"></i>
+        <span>Demander un devis</span>
+      </a>
+    </div>
+
+    <div class="mobile-contact">
+      <a href="tel:+336XXXXXXXX" class="contact-link">
+        <i class="pi pi-phone"></i>
+        <span>07 56 93 52 00</span>
+      </a>
+      <a href="mailto:contact@fuitepiscine-paca.fr" class="contact-link">
+        <i class="pi pi-envelope"></i>
+        <span>Nous écrire</span>
+      </a>
+    </div>
+  </div>
+</header>

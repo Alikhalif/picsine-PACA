@@ -1,0 +1,55 @@
+<!-- detection-methods.component.html -->
+<section class="detection-section">
+  <div class="container">
+    <div class="header" @scaleIn>
+      <div class="icon-badge">
+        <i class="pi pi-search"></i>
+      </div>
+      <h1>Détection de fuites piscine (non-destructive)</h1>
+      <p class="subtitle">Technologies avancées pour une localisation précise sans dégradation</p>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="pool-types">
+        <h2>Nous intervenons sur tous types de piscines :</h2>
+        <ul>
+          <li *ngFor="let type of poolTypes">
+            <i class="pi pi-check"></i> {{ type }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="methods" @fadeIn>
+        <h2>Méthodes utilisées :</h2>
+        <div class="method-grid">
+          <div *ngFor="let method of methods" class="feature-card">
+            <div class="card-image">
+              <img [src]="method.image" [alt]="method.title" loading="lazy">
+              <div class="image-overlay"></div>
+            </div>
+            <div class="card-content">
+              <div class="method-icon">
+                <i [class]="method.icon"></i>
+              </div>
+              <h3>{{ method.title }}</h3>
+              <p>{{ method.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="report" @scaleIn>
+        <h2>Rapport technique complet :</h2>
+        <div class="report-features">
+          <div *ngFor="let feature of reportFeatures" class="feature-item">
+            <i [class]="feature.icon"></i>
+            <span>{{ feature.text }}</span>
+          </div>
+        </div>
+        <div class="report-sample">
+          <img src="assets/images/report-sample.png" alt="Exemple de rapport technique" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

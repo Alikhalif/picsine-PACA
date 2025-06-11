@@ -1,0 +1,78 @@
+// methods.component.scss
+@import '../../../../../assets/scss/variables';
+
+.methodes {
+  padding: 5rem 0;
+  background: $bg-light;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: $text-dark;
+
+    span {
+      color: $primary;
+    }
+  }
+
+  .section-intro {
+    text-align: center;
+    color: $text-light;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: $border-radius;
+    padding: 2rem;
+    box-shadow: $shadow;
+    transition: $transition;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon {
+      font-size: 2.5rem;
+      color: $primary;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: $text-dark;
+    }
+
+    p {
+      color: $text-light;
+      line-height: 1.6;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .methodes {
+    padding: 3rem 0;
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

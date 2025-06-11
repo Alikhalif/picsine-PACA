@@ -1,0 +1,59 @@
+<!-- preventive-maintenance.component.html -->
+<section class="maintenance-section">
+  <div class="container">
+    <div class="section-header" @pulse>
+      <div class="section-icon">
+        <i class="pi pi-calendar"></i>
+      </div>
+      <h2>Entretien & maintenance préventive</h2>
+      <p class="subtitle">Un programme régulier pour préserver votre piscine et éviter les réparations coûteuses</p>
+    </div>
+
+    <div class="services-grid" @fadeSlideIn>
+      <div *ngFor="let service of services" class="service-card">
+        <div class="card-image">
+          <img [src]="service.image" [alt]="service.title" loading="lazy">
+          <div class="frequency-badge">
+            <i class="pi pi-clock"></i> {{ service.frequency }}
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="service-icon">
+            <i [class]="service.icon"></i>
+          </div>
+          <h3>{{ service.title }}</h3>
+
+          <div class="service-details">
+            <p *ngIf="service.description">{{ service.description }}</p>
+
+            <ul *ngIf="service.items">
+              <li *ngFor="let item of service.items">
+                <i class="pi pi-check"></i> {{ item }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="benefits-section" @pulse>
+      <h3>Les avantages de notre maintenance préventive :</h3>
+      <div class="benefits-grid">
+        <div *ngFor="let benefit of benefits" class="benefit-item">
+          <i class="pi pi-check-circle"></i>
+          <span>{{ benefit }}</span>
+        </div>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-content">
+          <h4>Programmez votre entretien annuel</h4>
+          <p>Nos techniciens certifiés interviennent dans toute la région PACA</p>
+        </div>
+        <button class="cta-button">
+          <i class="pi pi-calendar-plus"></i> Prendre rendez-vous
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,352 @@
+// pricing-diagnostic.component.scss
+@import '../../../../../assets/scss/variables';
+
+.pricing-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+  position: relative;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: $primary;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+
+      i {
+        font-size: 2rem;
+        color: white;
+      }
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: $text-dark;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      color: $text-light;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .pricing-cards {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .price-card {
+    background: white;
+    border-radius: $border-radius;
+    padding: 1.5rem;
+    box-shadow: $shadow;
+    transition: $transition;
+    position: relative;
+    border-top: 4px solid rgba($primary, 0.3);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    &.popular {
+      border-top: 4px solid $primary;
+      transform: scale(1.02);
+
+      &:hover {
+        transform: translateY(-5px) scale(1.02);
+      }
+    }
+
+    .card-header {
+      position: relative;
+      margin-bottom: 1rem;
+
+      h3 {
+        font-size: 1.2rem;
+        color: $text-dark;
+        margin-bottom: 0.5rem;
+      }
+
+      .price-tag {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $primary;
+      }
+
+      .popular-badge {
+        position: absolute;
+        top: -25px;
+        right: -15px;
+        background: $primary;
+        color: white;
+        padding: 0.35rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+    }
+
+    .service-description {
+      color: $text-light;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: $text-light;
+      font-size: 0.9rem;
+
+      i {
+        color: $primary;
+      }
+    }
+  }
+
+  .disclaimer {
+    background: rgba($primary, 0.05);
+    border-radius: $border-radius;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+
+    i {
+      color: $primary;
+      font-size: 1.5rem;
+      margin-top: 0.2rem;
+    }
+
+    p {
+      margin: 0;
+      color: $text-dark;
+    }
+  }
+
+  .quote-form {
+    background: white;
+    border-radius: $border-radius;
+    padding: 2rem;
+    box-shadow: $shadow;
+    max-width: 900px;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 1.5rem;
+      color: $text-dark;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+      .span-2 {
+        grid-column: span 2;
+      }
+    }
+
+    .form-group {
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: $text-dark;
+        font-weight: 500;
+      }
+
+      input, select, textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: $transition;
+
+        &:focus {
+          outline: none;
+          border-color: $primary;
+          box-shadow: 0 0 0 2px rgba($primary, 0.2);
+        }
+      }
+
+      .error-message {
+        color: $secondary;
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+      }
+    }
+
+    .file-upload {
+      position: relative;
+
+      .upload-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba($primary, 0.1);
+        color: $primary;
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+          background: rgba($primary, 0.2);
+        }
+      }
+
+      input[type="file"] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .file-name {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: $text-light;
+      }
+    }
+
+    .submit-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: $primary;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: $transition;
+      width: 100%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+
+      &:hover {
+        background: darken($primary, 10%);
+        transform: translateY(-2px);
+      }
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+  }
+
+  .success-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+
+    .modal-content {
+      background: white;
+      border-radius: $border-radius;
+      padding: 2rem;
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: $shadow;
+
+      i {
+        font-size: 3rem;
+        color: $primary;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        color: $text-dark;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: $text-light;
+        margin-bottom: 1.5rem;
+      }
+
+      .close-btn {
+        background: $primary;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+          background: darken($primary, 10%);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 0.5rem;
+
+    .header h1 {
+      font-size: 1.7rem;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr !important;
+
+      .span-2 {
+        grid-column: span 1 !important;
+      }
+    }
+
+    .quote-form {
+      padding: 1.5rem !important;
+      width: 95%;
+    }
+  }
+}

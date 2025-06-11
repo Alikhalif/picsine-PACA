@@ -1,0 +1,17 @@
+<!-- coverage.component.html -->
+<section class="zones">
+  <div class="container">
+    <h2>Nous intervenons <span>partout en PACA</span></h2>
+
+    <div class="villes-grid">
+      <div *ngFor="let dept of departments">
+        <h3><i class="pi pi-map-marker"></i> {{dept.name}}</h3>
+        <ul>
+          <li *ngFor="let city of dept.cities">{{city}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- <app-map></app-map> -->
+  </div>
+</section>

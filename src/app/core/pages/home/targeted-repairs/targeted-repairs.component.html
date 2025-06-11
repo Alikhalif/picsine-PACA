@@ -1,0 +1,61 @@
+<!-- targeted-repairs.component.html -->
+<section class="repairs-section" @fadeInStagger>
+  <div class="container">
+    <div class="section-header" @scaleIn>
+      <div class="section-badge">
+        <i class="pi pi-wrench"></i>
+      </div>
+      <h2>Réparations techniques ciblées</h2>
+      <p class="subtitle">Interventions professionnelles sans casse ou avec ouverture minimale</p>
+    </div>
+
+    <div class="repairs-grid">
+      <div *ngFor="let repair of repairs" class="repair-card">
+        <div class="card-image">
+          <img [src]="repair.image" [alt]="repair.title" loading="lazy">
+          <div class="image-overlay"></div>
+          <div class="warranty-badge" *ngIf="repair.warranty">
+            <i class="pi pi-check-circle"></i>
+            <span>Garantie 12 mois</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="repair-icon">
+            <i [class]="repair.icon"></i>
+          </div>
+          <h3>{{ repair.title }}</h3>
+
+          <div class="repair-details">
+            <ul *ngIf="repair.methods">
+              <li *ngFor="let method of repair.methods">
+                <i class="pi pi-check"></i> {{ method }}
+              </li>
+            </ul>
+
+            <p *ngIf="repair.description">{{ repair.description }}</p>
+
+            <div *ngIf="repair.items" class="items-list">
+              <span *ngFor="let item of repair.items" class="item-badge">
+                {{ item }}
+              </span>
+            </div>
+
+            <p *ngIf="repair.action">
+              <i class="pi pi-arrow-right"></i> {{ repair.action }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="warranty-section" @scaleIn>
+      <div class="warranty-card">
+        <i [class]="warrantyDetails.icon"></i>
+        <div class="warranty-content">
+          <h3>{{ warrantyDetails.coverage }}</h3>
+          <p>Durée de garantie: <strong>{{ warrantyDetails.duration }}</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

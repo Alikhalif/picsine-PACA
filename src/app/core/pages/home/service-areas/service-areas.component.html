@@ -1,0 +1,51 @@
+<!-- service-areas.component.html -->
+<section class="service-areas" @fadeIn>
+  <div class="container">
+    <div class="header">
+      <div class="icon-badge">
+        <i class="pi pi-map-marker"></i>
+      </div>
+      <h1>Zones d'intervention en région PACA</h1>
+      <p class="subtitle">Nos techniciens se déplacent rapidement dans tout le Sud-Est</p>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="map-section">
+        <div class="map-container">
+          <img src="assets/images/france-map.gif" alt="Carte de France" class="france-map">
+
+          <!-- Department markers on map -->
+          <div *ngFor="let department of departments"
+              class="map-marker"
+              [ngClass]="{ 'active': department.active }"
+              [style.left]="department.coordinates.x"
+              [style.top]="department.coordinates.y"
+              (click)="toggleDepartment(department)"
+              @pulseHighlight>
+            <i class="pi pi-location-pin"></i>
+            <span class="marker-tooltip">{{ department.name }}</span>
+          </div>
+        </div>
+
+        <div class="guarantee-banner">
+          <i class="pi pi-clock"></i>
+          <span>{{ guaranteeText }}</span>
+        </div>
+      </div>
+
+      <div class="departments-list">
+        <div *ngFor="let department of departments"
+             class="department-card"
+             [class.active]="department.active"
+             (click)="toggleDepartment(department)">
+          <h3>{{ department.name }}</h3>
+          <ul>
+            <li *ngFor="let city of department.cities">
+              <i class="pi pi-check"></i> {{ city }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
