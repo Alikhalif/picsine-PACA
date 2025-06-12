@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { trigger, transition, style, animate, stagger, query, useAnimation } from '@angular/animations';
 import { fadeInUp, zoomIn, fadeIn } from 'ng-animate';
+import { ApiService } from '../../../../service/api/api.service';
+import { Toast } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, Toast],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
   animations: [
@@ -49,11 +52,14 @@ export class ContactComponent {
 
   contactForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private api: ApiService,
+    private messageService: MessageService
+  ) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.pattern(/^[0-9]{10}$/)]],
+      phone: ['', ],
       message: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
@@ -64,9 +70,24 @@ export class ContactComponent {
 
   onSubmit(): void {
     if (this.contactForm.valid) {
+
+      this.api.submitContact(this.contactForm.value).subscribe({
+        next: (res) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Succès',
+            detail: 'Message envoyé avec succès !',
+          });
+        },
+        error: (err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Erreur',
+            detail: 'Une erreur est survenue : ' + err.message,
+          });
+        },
+      });
       // Handle form submission
-      console.log(this.contactForm.value);
-      alert('Merci pour votre message ! Nous vous contacterons bientôt.');
       this.contactForm.reset();
     }
   }

@@ -13,6 +13,10 @@ body {
   scroll-behavior: smooth;
 }
 
+a{
+  cursor: pointer;
+}
+
 
 :target {
   scroll-margin-top: 80px;

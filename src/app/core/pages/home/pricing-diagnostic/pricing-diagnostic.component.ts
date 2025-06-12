@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
+import { ApiService } from '../../../../service/api/api.service';
+import { Toast } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-pricing-diagnostic',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, Toast],
   templateUrl: './pricing-diagnostic.component.html',
   styleUrls: ['./pricing-diagnostic.component.scss'],
   animations: [
@@ -59,23 +62,40 @@ export class PricingDiagnosticComponent {
   formSubmitted = false;
   quoteForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private api: ApiService,
+    private messageService: MessageService
+  ) {
     this.quoteForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       city: ['', [Validators.required]],
       problem: ['', [Validators.required]],
       poolType: ['', [Validators.required]],
-      phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      phone: ['', []],
       photo: [null]
     });
   }
 
   onSubmit() {
     if (this.quoteForm.valid) {
-      this.formSubmitted = true;
-      // Form submission logic would go here
-      console.log('Form submitted:', this.quoteForm.value);
+      this.api.submitForm(this.quoteForm.value).subscribe({
+        next: (res) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Succès',
+            detail: 'Message envoyé avec succès !',
+          });
+        },
+        error: (err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Erreur',
+            detail: 'Une erreur est survenue : ' + err.message,
+          });
+        },
+      });
+      // this.formSubmitted = true;
     }
   }
 

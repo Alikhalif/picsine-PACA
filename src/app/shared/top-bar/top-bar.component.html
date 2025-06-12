@@ -1,140 +1,259 @@
 <!-- navbar.component.html -->
-<header class="navbar">
+<header class="navbar" [class.scrolled]="isScrolled">
   <div class="container">
-    <!-- Logo + Nom -->
-    <a href="/" class="brand">
-      <!-- <img src="/assets/logo-fuite-piscine.svg" alt="FuitePiscine-PACA - Détection de fuites piscine en région PACA" class="logo"> -->
-      <span class="brand-name">Fuite<span>Piscine</span>-PACA</span>
+    <!-- Logo + Brand -->
+    <a routerLink="/" class="brand" (click)="closeMenu()">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2ZM12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C16.42 20 20 16.42 20 12C20 7.58 16.42 4 12 4ZM12 6C15.31 6 18 8.69 18 12C18 15.31 15.31 18 12 18C8.69 18 6 15.31 6 12C6 8.69 8.69 6 12 6Z"/>
+          </svg>
+        </div>
+        <span class="brand-name">
+          Fuite<span class="accent">Piscine</span>-PACA
+        </span>
+      </div>
     </a>
 
-    <!-- Desktop Menu -->
+    <!-- Desktop Navigation -->
     <nav class="desktop-menu">
-      <ul>
-        <li><a href="/">Accueil</a></li>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a
+          (click)="navigateTo('home')"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="nav-link">
+            Accueil
+          </a>
+        </li>
 
-        <!-- Menu déroulant Services -->
-        <li class="dropdown">
-          <a href="/services">Services ▾</a>
+        <!-- Services Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-trigger">
+            Services
+            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 10L12 15L17 10H7Z"/>
+            </svg>
+          </a>
           <div class="dropdown-content">
-            <a href="/services/detection-fuite">Détection de fuite</a>
-            <a href="/services/reparations">Réparations</a>
-            <a href="/services/maintenance">Maintenance</a>
+            <div class="dropdown-grid">
+              <a (click)="navigateTo('detection')"  class="dropdown-link">
+                <div class="service-icon">🔍</div>
+                <div class="service-info">
+                  <span class="service-title">Détection de fuite</span>
+                  <span class="service-desc">Localisation précise des fuites</span>
+                </div>
+              </a>
+              <a (click)="navigateTo('repairs')" class="dropdown-link">
+                <div class="service-icon">🔧</div>
+                <div class="service-info">
+                  <span class="service-title">Réparations</span>
+                  <span class="service-desc">Réparation professionnelle</span>
+                </div>
+              </a>
+              <a (click)="navigateTo('maintenance')" class="dropdown-link">
+                <div class="service-icon">🛡️</div>
+                <div class="service-info">
+                  <span class="service-title">Maintenance</span>
+                  <span class="service-desc">Entretien préventif</span>
+                </div>
+              </a>
+            </div>
           </div>
         </li>
 
-        <li><a href="/zones-intervention">Zones d'intervention</a></li>
-        <li><a href="/tarifs">Tarifs</a></li>
-        <li><a href="/avis">Avis</a></li>
+        <li class="nav-item">
+          <a (click)="navigateTo('areas')" routerLinkActive="active" class="nav-link">
+            Zones d'intervention
+          </a>
+        </li>
+        <li class="nav-item">
+          <a (click)="navigateTo('pricing')" routerLinkActive="active" class="nav-link">
+            Tarifs
+          </a>
+        </li>
+        <li class="nav-item">
+          <a (click)="navigateTo('testimonials')" routerLinkActive="active" class="nav-link">
+            Avis
+          </a>
+        </li>
       </ul>
     </nav>
 
-    <!-- Boutons CTA (Desktop) -->
+    <!-- CTA Buttons (Desktop) -->
     <div class="cta-buttons">
-      <a href="tel:+336XXXXXXXX" class="btn btn-urgence">
-        <i class="pi pi-phone"></i> Urgence
+      <a href="tel:+33756935200" class="btn btn-urgence">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+        </svg>
+        Urgence
       </a>
-      <a href="/devis" class="btn btn-devis">
-        <i class="pi pi-envelope"></i> Devis
+      <a (click)="navigateTo('pricing')" class="btn btn-devis">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+        </svg>
+        Devis gratuit
       </a>
     </div>
 
-    <!-- Burger Menu (Mobile) -->
-    <button class="burger-menu" (click)="toggleMenu()" aria-label="Menu" [attr.aria-expanded]="isMenuOpen">
-      <span [class.active]="isMenuOpen"></span>
-      <span [class.active]="isMenuOpen"></span>
-      <span [class.active]="isMenuOpen"></span>
+    <!-- Mobile Menu Button -->
+    <button
+      class="burger-menu"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen"
+      [class.active]="isMenuOpen"
+      aria-label="Menu de navigation">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
     </button>
   </div>
 
-   <!-- Enhanced Mobile Menu (Overlay) -->
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" [class.active]="isMenuOpen" (click)="closeMenu()"></div>
+
+  <!-- Mobile Menu -->
   <div class="mobile-menu" [class.active]="isMenuOpen">
     <div class="mobile-menu-header">
       <div class="mobile-brand">
-        <span class="brand-name">Fuite<span>Piscine</span>-PACA</span>
+        <span class="brand-name">
+          Fuite<span class="accent">Piscine</span>-PACA
+        </span>
       </div>
       <button class="close-menu" (click)="closeMenu()" aria-label="Fermer le menu">
-        <i class="pi pi-times"></i>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+        </svg>
       </button>
     </div>
 
     <nav class="mobile-nav">
-      <ul>
-        <li>
-          <a href="/" (click)="closeMenu()" class="nav-link">
-            <i class="pi pi-home"></i>
-            <span>Accueil</span>
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
+          <a routerLink="/" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <div class="nav-link-content">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+              </svg>
+              <span>Accueil</span>
+            </div>
           </a>
         </li>
 
-        <li class="mobile-dropdown" [class.active]="isSubMenuOpen">
-          <a (click)="toggleSubMenu()" class="nav-link">
-            <i class="pi pi-cog"></i>
-            <span>Services</span>
-            <i class="pi pi-chevron-down dropdown-icon"></i>
-          </a>
-          <ul class="mobile-submenu">
+        <!-- Mobile Services Dropdown -->
+        <li class="mobile-nav-item mobile-dropdown" [class.active]="isSubMenuOpen">
+          <button class="mobile-nav-link dropdown-toggle" (click)="toggleSubMenu()">
+            <div class="nav-link-content">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
+              </svg>
+              <span>Services</span>
+              <svg class="dropdown-arrow" [class.rotated]="isSubMenuOpen" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7,10L12,15L17,10H7Z"/>
+              </svg>
+            </div>
+          </button>
+          <ul class="mobile-submenu" [class.active]="isSubMenuOpen">
             <li>
-              <a href="/services/detection-fuite" (click)="closeMenu()" class="submenu-link">
-                <i class="pi pi-search"></i>
-                <span>Détection de fuite</span>
+              <a routerLink="/services/detection-fuite" (click)="closeMenu()" class="mobile-submenu-link">
+                <div class="submenu-content">
+                  <span class="submenu-icon">🔍</span>
+                  <div class="submenu-text">
+                    <span class="submenu-title">Détection de fuite</span>
+                    <span class="submenu-desc">Localisation précise</span>
+                  </div>
+                </div>
               </a>
             </li>
             <li>
-              <a href="/services/reparations" (click)="closeMenu()" class="submenu-link">
-                <i class="pi pi-wrench"></i>
-                <span>Réparations</span>
+              <a routerLink="/services/reparations" (click)="closeMenu()" class="mobile-submenu-link">
+                <div class="submenu-content">
+                  <span class="submenu-icon">🔧</span>
+                  <div class="submenu-text">
+                    <span class="submenu-title">Réparations</span>
+                    <span class="submenu-desc">Intervention rapide</span>
+                  </div>
+                </div>
               </a>
             </li>
             <li>
-              <a href="/services/maintenance" (click)="closeMenu()" class="submenu-link">
-                <i class="pi pi-shield"></i>
-                <span>Maintenance</span>
+              <a routerLink="/services/maintenance" (click)="closeMenu()" class="mobile-submenu-link">
+                <div class="submenu-content">
+                  <span class="submenu-icon">🛡️</span>
+                  <div class="submenu-text">
+                    <span class="submenu-title">Maintenance</span>
+                    <span class="submenu-desc">Entretien préventif</span>
+                  </div>
+                </div>
               </a>
             </li>
           </ul>
         </li>
 
-        <li>
-          <a href="/zones-intervention" (click)="closeMenu()" class="nav-link">
-            <i class="pi pi-map-marker"></i>
-            <span>Zones d'intervention</span>
+        <li class="mobile-nav-item">
+          <a routerLink="/zones-intervention" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active">
+            <div class="nav-link-content">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+              </svg>
+              <span>Zones d'intervention</span>
+            </div>
           </a>
         </li>
 
-        <li>
-          <a href="/tarifs" (click)="closeMenu()" class="nav-link">
-            <i class="pi pi-euro"></i>
-            <span>Tarifs</span>
+        <li class="mobile-nav-item">
+          <a routerLink="/tarifs" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active">
+            <div class="nav-link-content">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7,15H9C9,16.08 10.37,17 12,17C13.63,17 15,16.08 15,15C15,13.9 13.96,13.5 11.76,12.97C9.64,12.44 7,11.78 7,9C7,7.21 8.47,5.69 10.5,5.18V3H13.5V5.18C15.53,5.69 17,7.21 17,9H15C15,7.92 13.63,7 12,7C10.37,7 9,7.92 9,9C9,10.1 10.04,10.5 12.24,11.03C14.36,11.56 17,12.22 17,15C17,16.79 15.53,18.31 13.5,18.82V21H10.5V18.82C8.47,18.31 7,16.79 7,15Z"/>
+              </svg>
+              <span>Tarifs</span>
+            </div>
           </a>
         </li>
 
-        <li>
-          <a href="/avis" (click)="closeMenu()" class="nav-link">
-            <i class="pi pi-star"></i>
-            <span>Avis clients</span>
+        <li class="mobile-nav-item">
+          <a routerLink="/avis" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active">
+            <div class="nav-link-content">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.46,13.97L5.82,21L12,17.27Z"/>
+              </svg>
+              <span>Avis clients</span>
+            </div>
           </a>
         </li>
       </ul>
     </nav>
 
+    <!-- Mobile CTA Buttons -->
     <div class="mobile-cta-group">
-      <a href="tel:+336XXXXXXXX" class="btn btn-urgence">
-        <i class="pi pi-phone"></i>
+      <a href="tel:+33756935200" class="btn btn-urgence mobile-btn">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+        </svg>
         <span>Urgence fuite</span>
       </a>
-      <a href="/devis" class="btn btn-devis">
-        <i class="pi pi-envelope"></i>
-        <span>Demander un devis</span>
+      <a routerLink="/devis" (click)="closeMenu()" class="btn btn-devis mobile-btn">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+        </svg>
+        <span>Devis gratuit</span>
       </a>
     </div>
 
+    <!-- Mobile Contact Info -->
     <div class="mobile-contact">
-      <a href="tel:+336XXXXXXXX" class="contact-link">
-        <i class="pi pi-phone"></i>
+      <a href="tel:+33756935200" class="contact-link">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+        </svg>
         <span>07 56 93 52 00</span>
       </a>
       <a href="mailto:contact@fuitepiscine-paca.fr" class="contact-link">
-        <i class="pi pi-envelope"></i>
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+        </svg>
         <span>Nous écrire</span>
       </a>
     </div>
