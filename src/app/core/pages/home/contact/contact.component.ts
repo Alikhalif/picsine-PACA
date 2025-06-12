@@ -93,10 +93,10 @@ export class ContactComponent {
   }
 
   get phoneNumber(): string {
-    return 'tel:+33612345678'; // Replace with your actual phone number
+    return 'tel:+33756935200'; // Replace with your actual phone number
   }
 
   get whatsappLink(): string {
-    return 'https://wa.me/33612345678?text=Bonjour,%20je%20suis%20intéressé%20par%20vos%20services'; // Replace with your actual number
+    return 'https://wa.me/33756935200?text=Bonjour,%20je%20suis%20intéressé%20par%20vos%20services'; // Replace with your actual number
   }
 }

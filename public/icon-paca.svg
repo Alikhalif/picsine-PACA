@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .water { fill: #00B4D8; opacity: 0.9; }
+  </style>
+  <!-- Simplified water ripple (scaled down) -->
+  <path class="water" d="M2 24 Q8 22 14 24 T26 24"/>
+  <!-- "FP" monogram (optional) -->
+  <text x="16" y="18" font-family="Arial" font-size="14" font-weight="bold" 
+        text-anchor="middle" fill="#003366">FP</text>
+</svg>

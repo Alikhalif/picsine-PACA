@@ -75,7 +75,11 @@ $desktop: 1200px;
   .logo-container {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    width: 210px;
+    height: 210px;
+    margin-top: 0.5rem;
+    @include smooth-transition;
+    // gap: 0.75rem;
   }
 
   .logo-icon {
