@@ -70,7 +70,7 @@ $desktop: 1200px;
 .brand {
   text-decoration: none;
   @include smooth-transition;
-  @include hover-lift;
+  // @include hover-lift;
 
   .logo-container {
     display: flex;
@@ -86,7 +86,7 @@ $desktop: 1200px;
     width: 40px;
     height: 40px;
     background: linear-gradient(135deg, $primary, $primary-light);
-    border-radius: 12px;
+    // border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -439,22 +439,34 @@ $desktop: 1200px;
     padding: 1.5rem;
     border-bottom: 1px solid rgba($gray-200, 0.5);
 
+    .logo-containers {
+      display: flex;
+      align-items: center;
+      width: 210px;
+      // height: 210px;
+      // margin-top: 0.5rem;
+      @include smooth-transition;
+      // gap: 0.75rem;
+    }
+
     .mobile-brand {
       .brand-name {
-        font-size: 1.25rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, $primary, $primary-light);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        // font-size: 1.25rem;
+        // font-weight: 700;
+        // // background: linear-gradient(135deg, $primary, $primary-light);
+        // // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+        // background-clip: text;
 
         .accent {
-          background: linear-gradient(135deg, $secondary, $secondary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          // background: linear-gradient(135deg, $secondary, $secondary);
+          // -webkit-background-clip: text;
+          // -webkit-text-fill-color: transparent;
+          // background-clip: text;
         }
       }
+
+
     }
 
     .close-menu {

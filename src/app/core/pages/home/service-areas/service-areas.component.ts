@@ -55,12 +55,7 @@ export class ServiceAreasComponent {
       coordinates: { x: '70%', y: '60%' },
       active: false
     },
-    {
-      name: "Alpes-de-Haute-Provence",
-      cities: ["Digne-les-Bains", "Manosque", "Gap"],
-      coordinates: { x: '75%', y: '45%' },
-      active: false
-    }
+    
   ];
 
   selectedDepartment: any = null;

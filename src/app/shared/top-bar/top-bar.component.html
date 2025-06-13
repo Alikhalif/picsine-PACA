@@ -21,7 +21,7 @@
 
             <!-- Accent dot -->
             <circle cx="165" cy="40" r="4" class="water"/>
-          </svg>
+        </svg>
         <!-- <div class="logo-icon">
 
         </div> -->
@@ -129,10 +129,25 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" [class.active]="isMenuOpen">
     <div class="mobile-menu-header">
-      <div class="mobile-brand">
-        <span class="brand-name">
-          Fuite<span class="accent">Piscine</span>-PACA
-        </span>
+      <div class="logo-containers">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+          <style>
+            .text { font-family: 'Raleway', sans-serif; }
+            .main { fill: #0066cc; font-size: 26px; font-weight: 800; }
+            .tagline { fill: #0066cc; font-size: 11px; letter-spacing: 1px; }
+            .water { fill: #e74c3c; }
+          </style>
+
+          <!-- Water ripple under text -->
+          <path class="water" d="M20 70 Q40 65 60 70 T100 70" opacity="0.8"/>
+
+          <!-- Text -->
+          <text x="20" y="45" class="text main">FuitePiscine</text>
+          <text x="20" y="60" class="text tagline">EXPERT EN RÉGION PACA</text>
+
+          <!-- Accent dot -->
+          <circle cx="165" cy="40" r="4" class="water"/>
+        </svg>
       </div>
       <button class="close-menu" (click)="closeMenu()" aria-label="Fermer le menu">
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -144,7 +159,7 @@
     <nav class="mobile-nav">
       <ul class="mobile-nav-list">
         <li class="mobile-nav-item">
-          <a routerLink="/" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a (click)="navigateTo('home')" routerLink="/" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <div class="nav-link-content">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
@@ -169,7 +184,7 @@
           </button>
           <ul class="mobile-submenu" [class.active]="isSubMenuOpen">
             <li>
-              <a routerLink="/services/detection-fuite" (click)="closeMenu()" class="mobile-submenu-link">
+              <a (click)="navigateTo('detection')" routerLink="/services/detection-fuite" (click)="closeMenu()" class="mobile-submenu-link">
                 <div class="submenu-content">
                   <span class="submenu-icon">🔍</span>
                   <div class="submenu-text">
@@ -180,7 +195,7 @@
               </a>
             </li>
             <li>
-              <a routerLink="/services/reparations" (click)="closeMenu()" class="mobile-submenu-link">
+              <a (click)="navigateTo('repairs')" routerLink="/services/reparations" (click)="closeMenu()" class="mobile-submenu-link">
                 <div class="submenu-content">
                   <span class="submenu-icon">🔧</span>
                   <div class="submenu-text">
@@ -191,7 +206,7 @@
               </a>
             </li>
             <li>
-              <a routerLink="/services/maintenance" (click)="closeMenu()" class="mobile-submenu-link">
+              <a (click)="navigateTo('maintenance')" routerLink="/services/maintenance" (click)="closeMenu()" class="mobile-submenu-link">
                 <div class="submenu-content">
                   <span class="submenu-icon">🛡️</span>
                   <div class="submenu-text">
@@ -205,7 +220,7 @@
         </li>
 
         <li class="mobile-nav-item">
-          <a routerLink="/zones-intervention" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active">
+          <a (click)="navigateTo('areas')" routerLink="/zones-intervention" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active">
             <div class="nav-link-content">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
@@ -216,7 +231,7 @@
         </li>
 
         <li class="mobile-nav-item">
-          <a routerLink="/tarifs" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active">
+          <a (click)="navigateTo('pricing')" routerLink="/tarifs" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active">
             <div class="nav-link-content">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M7,15H9C9,16.08 10.37,17 12,17C13.63,17 15,16.08 15,15C15,13.9 13.96,13.5 11.76,12.97C9.64,12.44 7,11.78 7,9C7,7.21 8.47,5.69 10.5,5.18V3H13.5V5.18C15.53,5.69 17,7.21 17,9H15C15,7.92 13.63,7 12,7C10.37,7 9,7.92 9,9C9,10.1 10.04,10.5 12.24,11.03C14.36,11.56 17,12.22 17,15C17,16.79 15.53,18.31 13.5,18.82V21H10.5V18.82C8.47,18.31 7,16.79 7,15Z"/>
@@ -227,7 +242,7 @@
         </li>
 
         <li class="mobile-nav-item">
-          <a routerLink="/avis" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active">
+          <a (click)="navigateTo('testimonials')" routerLink="/avis" (click)="closeMenu()" class="mobile-nav-link" routerLinkActive="active">
             <div class="nav-link-content">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.46,13.97L5.82,21L12,17.27Z"/>
@@ -247,7 +262,7 @@
         </svg>
         <span>Urgence fuite</span>
       </a>
-      <a routerLink="/devis" (click)="closeMenu()" class="btn btn-devis mobile-btn">
+      <a (click)="navigateTo('pricing')" routerLink="/devis" (click)="closeMenu()" class="btn btn-devis mobile-btn">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
           <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
         </svg>
@@ -263,7 +278,7 @@
         </svg>
         <span>07 56 93 52 00</span>
       </a>
-      <a href="mailto:contact@fuitepiscine-paca.fr" class="contact-link">
+      <a href="mailto:contact@fuitepiscine-paca.com" class="contact-link">
         <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
           <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
         </svg>
