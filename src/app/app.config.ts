@@ -4,8 +4,6 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/Aura';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -18,10 +16,6 @@ export const appConfig: ApplicationConfig = {
     //
     provideAnimationsAsync(),
     provideAnimations(),
-    providePrimeNG({
-        theme: {
-            preset: Aura
-        }
-    })
+
   ]
 };
