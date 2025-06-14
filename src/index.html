@@ -1,14 +1,71 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>FuitePiscinePACA</title>
+  <title>Dépannage Piscine PACA - Réparation de fuites professionnelles</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta name="description" content="Experts en détection et réparation de fuites de piscine dans toute la région PACA. Intervention rapide 7j/7.">
+
+  <!-- Preload & prefetch critical resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+  <!-- Font Awesome with fallback -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </noscript>
+
+  <!-- Optimized Google Fonts with font-display -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+  </noscript>
+
+  <!-- Favicon with modern formats -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <!-- <link rel="icon" href="/icon.svg" type="image/svg+xml"> -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <!-- <link rel="manifest" href="/site.webmanifest"> -->
+
+  <!-- Critical CSS for initial render -->
+  <style>
+    app-root {
+      display: block;
+      min-height: 100vh;
+      opacity: 0;
+      animation: fadeIn 0.3s ease-in forwards;
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* Fallback font while Montserrat loads */
+    body { font-family: system-ui, -apple-system, sans-serif; }
+  </style>
 </head>
 <body>
   <app-root></app-root>
+
+  <!-- Progressive enhancement script -->
+  <script>
+    // Font Awesome fallback
+    (function() {
+      const faLink = document.createElement('link');
+      faLink.rel = 'stylesheet';
+      faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+
+      if (!document.querySelector('link[href^="https://cdnjs.cloudflare.com/ajax/libs/font-awesome"]')) {
+        document.head.appendChild(faLink);
+      }
+
+      // System font fallback handler
+      document.fonts.ready.then(() => {
+        if (!document.fonts.check('1rem Montserrat')) {
+          document.documentElement.classList.add('fonts-failed');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
