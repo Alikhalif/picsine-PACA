@@ -5,23 +5,26 @@
     <a routerLink="/" class="brand" (click)="closeMenu()">
       <div class="logo-container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
-            <style>
-              .text { font-family: 'Raleway', sans-serif; }
-              .main { fill: #0066cc; font-size: 26px; font-weight: 800; }
-              .tagline { fill: #0066cc; font-size: 11px; letter-spacing: 1px; }
-              .water { fill: #e74c3c; }
-            </style>
+          <style>
+            .text { font-family: 'Raleway', sans-serif; }
+            .main { fill: #0066cc; font-size: 26px; font-weight: 800; }
+            .tagline { fill: #0066cc; font-size: 11px; letter-spacing: 1px; }
+            .tagline-small { fill: #0066cc; font-size: 10px; letter-spacing: 0.5px; }
+            .water { fill: #e74c3c; }
+          </style>
 
-            <!-- Water ripple under text -->
-            <path class="water" d="M20 70 Q40 65 60 70 T100 70" opacity="0.8"/>
+          <!-- Text -->
+          <text x="20" y="45" class="text main">FuitePiscine</text>
+          <text x="20" y="60" class="text tagline">EXPERT EN RECHERCHE DE FUITE</text>
+          <text x="20" y="75" class="text tagline-small">SUR TOUTE LA RÉGION PACA</text>
 
-            <!-- Text -->
-            <text x="20" y="45" class="text main">FuitePiscine</text>
-            <text x="20" y="60" class="text tagline">EXPERT EN RÉGION PACA</text>
+          <!-- Accent dot -->
+          <circle cx="165" cy="40" r="4" class="water"/>
 
-            <!-- Accent dot -->
-            <circle cx="165" cy="40" r="4" class="water"/>
+          <!-- Water ripple under text (visually placed lower) -->
+          <path class="water" d="M20 85 Q40 80 60 85 T100 85" opacity="0.8"/>
         </svg>
+
         <!-- <div class="logo-icon">
 
         </div> -->
@@ -135,18 +138,20 @@
             .text { font-family: 'Raleway', sans-serif; }
             .main { fill: #0066cc; font-size: 26px; font-weight: 800; }
             .tagline { fill: #0066cc; font-size: 11px; letter-spacing: 1px; }
+            .tagline-small { fill: #0066cc; font-size: 10px; letter-spacing: 0.5px; }
             .water { fill: #e74c3c; }
           </style>
 
-          <!-- Water ripple under text -->
-          <path class="water" d="M20 70 Q40 65 60 70 T100 70" opacity="0.8"/>
-
           <!-- Text -->
           <text x="20" y="45" class="text main">FuitePiscine</text>
-          <text x="20" y="60" class="text tagline">EXPERT EN RÉGION PACA</text>
+          <text x="20" y="60" class="text tagline">EXPERT EN RECHERCHE DE FUITE</text>
+          <text x="20" y="75" class="text tagline-small">SUR TOUTE LA RÉGION PACA</text>
 
           <!-- Accent dot -->
           <circle cx="165" cy="40" r="4" class="water"/>
+
+          <!-- Water ripple under text (visually placed lower) -->
+          <path class="water" d="M20 85 Q40 80 60 85 T100 85" opacity="0.8"/>
         </svg>
       </div>
       <button class="close-menu" (click)="closeMenu()" aria-label="Fermer le menu">
