@@ -6,7 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:3000/api';
+  // private baseUrl = 'https://depannage-piscine.com/api';
+
+  private baseUrl = 'http://127.0.0.1:3000/api'
+
 
   constructor(private http: HttpClient) {}
 

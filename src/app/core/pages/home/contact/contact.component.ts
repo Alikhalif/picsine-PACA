@@ -4,13 +4,13 @@ import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup } 
 import { trigger, transition, style, animate, stagger, query, useAnimation } from '@angular/animations';
 import { fadeInUp, zoomIn, fadeIn } from 'ng-animate';
 import { ApiService } from '../../../../service/api/api.service';
-import { Toast } from 'primeng/toast';
+import { Toast, ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, Toast],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToastModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
   animations: [
@@ -78,6 +78,8 @@ export class ContactComponent {
             summary: 'Succès',
             detail: 'Message envoyé avec succès !',
           });
+          console.log("done!");
+
         },
         error: (err) => {
           this.messageService.add({
