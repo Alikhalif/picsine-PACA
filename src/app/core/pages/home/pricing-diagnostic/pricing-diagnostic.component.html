@@ -14,7 +14,7 @@
         <div *ngFor="let item of priceItems" class="price-card" [class.popular]="item.popular">
           <div class="card-header">
             <h3>{{ item.service }}</h3>
-            <div class="price-tag">{{ item.price }}</div>
+            <!-- <div class="price-tag">{{ item.price }}</div> -->
             <div class="popular-badge" *ngIf="item.popular">Le plus demandé</div>
           </div>
           <p class="service-description">{{ item.description }}</p>
