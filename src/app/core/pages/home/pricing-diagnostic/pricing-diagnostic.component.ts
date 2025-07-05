@@ -38,7 +38,7 @@ export class PricingDiagnosticComponent {
     {
       service: "Diagnostic complet + rapport",
       price: "189 € TTC",
-      description: "Localisation précise de la fuite avec rapport détaillé",
+      description: "Localisation précise de la fuite avec rapport ",
       popular: true
     },
     {
@@ -104,5 +104,9 @@ export class PricingDiagnosticComponent {
     if (file) {
       this.quoteForm.patchValue({ photo: file });
     }
+  }
+
+  callEmergency() {
+    window.location.href = 'tel:+33756935200';
   }
 }

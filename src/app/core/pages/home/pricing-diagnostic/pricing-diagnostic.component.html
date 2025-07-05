@@ -18,9 +18,17 @@
             <div class="popular-badge" *ngIf="item.popular">Le plus demandé</div>
           </div>
           <p class="service-description">{{ item.description }}</p>
-          <div class="card-footer">
+          <!-- <div class="card-footer">
             <i class="pi pi-info-circle"></i>
             <span>Sans engagement</span>
+          </div> -->
+
+          <div class="zone-footer">
+            <button class="contact-btn" (click)="callEmergency()">
+              <span class="btn-icon">📞</span>
+              <span class="btn-text">Contacter</span>
+              <div class="btn-ripple"></div>
+            </button>
           </div>
         </div>
       </div>
